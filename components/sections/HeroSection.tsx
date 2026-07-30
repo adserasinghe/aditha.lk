@@ -107,7 +107,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           {/* Portrait Container */}
           <div className="relative w-full max-w-md aspect-square rounded-none overflow-hidden shadow-2xl bg-[#0b0f19]">
             <Image
-              src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/Gemini_Generated_Image_e3glqte3glqte3gl-clean.png"
+              src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"
               fill
               className="object-cover transition-transform duration-700 hover:scale-105 rounded-none"
