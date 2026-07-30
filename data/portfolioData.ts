@@ -194,13 +194,13 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'nexus-branding',
-    title: 'Nexus Branding',
+    title: 'Zeebac Brand Identity & Apparel',
     category: 'Branding',
-    description: 'Modern brand identity system for a futuristic tech conglomerate, including logo, typography, and guidelines.',
-    longDescription: 'A comprehensive brand architecture developed for Nexus Dynamics. The deliverable included custom logotype geometry, color theory guidelines optimized for both physical merchandise and OLED digital displays, typography pairing systems, and 3D motion graphic bumpers.',
-    image: 'https://picsum.photos/seed/nexuspiersunset/1200/800',
-    tags: ['Brand Identity', 'Adobe Illustrator', 'Logo Design', 'Typography', '3D Motion'],
-    liveUrl: 'https://behance.net/aditha-serasinghe/nexus'
+    description: 'Complete brand identity and athleisure apparel mockup system, including logo typography, merchandise packaging, and brand guidelines.',
+    longDescription: 'A comprehensive brand architecture and merchandise design system developed for Zeebac Athleisure Innovation. The project included custom logotype typography, merchandise packaging mockups (hoodies, headwear, apparel tags, and boxes), color theory guidelines optimized for physical products, and digital media assets.',
+    image: 'https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/Gemini_Generated_Image_e3glqte3glqte3gl-clean.png',
+    tags: ['Brand Identity', 'Apparel Design', 'Logo Design', 'Typography', 'Packaging'],
+    liveUrl: 'https://www.behance.net/gallery/253532895/adserasinghe-portfolio'
   }
 ];
 
@@ -213,6 +213,7 @@ export const CONTACT_INFO = {
     github: "https://github.com/adserasinghe",
     linkedin: "https://linkedin.com/in/adserasinghe",
     twitter: "https://x.com/adserasinghe",
-    facebook: "https://facebook.com/adserasinghe"
+    facebook: "https://facebook.com/adserasinghe",
+    behance: "https://www.behance.net/gallery/253532895/adserasinghe-portfolio"
   }
 };

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { ExternalLink, Github, Filter, Layers, ArrowUpRight } from 'lucide-react';
+import { Filter, Layers, ArrowUpRight } from 'lucide-react';
 import { PROJECTS } from '../../data/portfolioData';
 import { Project, ProjectCategory } from '../../types/portfolio';
 
@@ -128,11 +128,6 @@ export default function PortfolioSection({ onSelectProject }: PortfolioSectionPr
                         {tag}
                       </span>
                     ))}
-                  </div>
-
-                  <div className="flex items-center gap-2 text-gray-400 group-hover:text-white transition-colors">
-                    {project.liveUrl && <ExternalLink size={16} />}
-                    {project.githubUrl && <Github size={16} />}
                   </div>
                 </div>
               </div>
