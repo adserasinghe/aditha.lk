@@ -29,10 +29,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-start gap-8 z-10"
+          className="lg:col-span-7 order-1 flex flex-col items-start gap-8 z-10"
         >
           {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-white leading-[1.1] order-1">
             <span className="hover:font-bold transition-all duration-300 inline-block mr-2">Hi,</span>
             <span className="hover:font-bold transition-all duration-300 inline-block mr-2">I'm</span>
             <span className="text-blue-500 hover:font-bold transition-all duration-300 inline-block mr-0">ADITHA</span>
@@ -43,30 +43,28 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent hover:font-bold transition-all duration-300 inline-block">Excellence.</span>
           </h1>
 
-          {/* Mobile Image (Visible only on mobile) */}
-          <div className="lg:hidden w-full flex justify-center">
-            <div className="relative w-full max-w-sm aspect-square rounded-none overflow-hidden shadow-2xl bg-[#0b0f19]">
-              <Image
-                src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
-                alt="Aditha Dinuja Serasinghe"
-                fill
-                className="object-cover transition-transform duration-700 hover:scale-105 rounded-none"
-                referrerPolicy="no-referrer"
-                priority
-              />
-            </div>
-          </div>
-
           {/* Subheading */}
-          <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
+          <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed order-2">
             {HERO_DATA.subheading}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-wrap items-center gap-4 pt-4">
+          {/* Hero Portrait Image (Mobile & Tablet view only, placed before buttons on mobile/tablet) */}
+          <div className="lg:hidden relative w-full max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-[#0b0f19] mt-2 order-3">
+            <Image
+              src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
+              alt="Aditha Dinuja Serasinghe"
+              fill
+              className="object-cover transition-transform duration-700 hover:scale-105"
+              referrerPolicy="no-referrer"
+              priority
+            />
+          </div>
+
+          {/* CTA Buttons (Placed after image on mobile/tablet via order-4, before image on desktop via lg:order-3) */}
+          <div className="w-full max-w-md lg:max-w-none flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 order-4 lg:order-3">
             <button
               onClick={() => onTabChange('portfolio')}
-              className="group flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full shadow-[0_4px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.5)] transition-all active:scale-95"
+              className="group flex items-center justify-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full shadow-[0_4px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.5)] transition-all active:scale-95 w-full sm:w-auto"
             >
               <span>{HERO_DATA.primaryCta}</span>
               <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
@@ -74,36 +72,34 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
             <button
               onClick={() => onTabChange('about')}
-              className="flex items-center gap-2 px-8 py-4 rounded-full border border-white/20 hover:border-blue-400/80 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all active:scale-95"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full border border-white/20 hover:border-blue-400/80 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all active:scale-95 w-full sm:w-auto"
             >
               <span>{HERO_DATA.secondaryCta}</span>
             </button>
           </div>
         </motion.div>
 
-        {/* Right Column: Portrait Image Frame */}
+        {/* Right Column: Portrait Image Frame (Desktop view) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9, rotate: 1 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="hidden lg:flex lg:col-span-5 order-1 lg:order-2 justify-center lg:justify-end relative"
+          className="hidden lg:flex lg:col-span-5 order-2 justify-center lg:justify-end relative"
         >
           {/* Outer glow aura */}
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-600/30 via-cyan-500/20 to-purple-600/20 blur-2xl -z-10" />
 
           {/* Portrait Container */}
-          <div className="relative w-full max-w-md aspect-square rounded-none overflow-hidden shadow-2xl bg-[#0b0f19]">
+          <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-[#0b0f19]">
             <Image
               src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"
               fill
-              className="object-cover transition-transform duration-700 hover:scale-105 rounded-none"
+              className="object-cover transition-transform duration-700 hover:scale-105"
               referrerPolicy="no-referrer"
               priority
             />
-            
           </div>
-          
         </motion.div>
 
         {/* Scroll Down Button */}

@@ -46,6 +46,20 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
             ))}
           </div>
 
+          {/* Mobile & Tablet Image (Visible after paragraph on mobile and tablet) */}
+          <div className="lg:hidden w-full flex justify-center py-2">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0b0f19]">
+              <Image
+                src={aboutImage}
+                alt="Aditha Journey"
+                fill
+                className="object-cover"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50" />
+            </div>
+          </div>
+
           {/* Quality Badges */}
           <div className="grid grid-cols-2 gap-3 pt-4">
             {QUALITY_BADGES.map((badge) => (
@@ -90,12 +104,12 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
           </div>
         </motion.div>
 
-        {/* Right Portrait Column */}
+        {/* Right Portrait Column (Desktop view) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="lg:col-span-5 flex justify-center relative"
+          className="hidden lg:flex lg:col-span-5 justify-center relative"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-cyan-500/10 to-transparent rounded-3xl blur-2xl -z-10" />
           <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0b0f19]">
