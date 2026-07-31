@@ -32,10 +32,6 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
           transition={{ duration: 0.6 }}
           className="lg:col-span-7 space-y-6"
         >
-          <div className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-500 bg-blue-500/10 px-3.5 py-1.5 rounded-full border border-blue-500/20">
-            <span>About Aditha Serasinghe</span>
-          </div>
-
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
             About My <span className="text-blue-500">Journey</span>
           </h1>

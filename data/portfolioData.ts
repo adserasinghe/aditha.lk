@@ -214,6 +214,6 @@ export const CONTACT_INFO = {
     linkedin: "https://linkedin.com/in/adserasinghe",
     twitter: "https://x.com/adserasinghe",
     facebook: "https://facebook.com/adserasinghe",
-    behance: "https://www.behance.net/gallery/253532895/adserasinghe-portfolio"
+    behance: "https://www.behance.net/adserasinghe"
   }
 };

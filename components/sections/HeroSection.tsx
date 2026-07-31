@@ -102,7 +102,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           </div>
         </motion.div>
 
-        {/* Scroll Down Button */}
+        {/* Scroll Down Button (Desktop view) */}
         <button
           onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
           className="absolute bottom-4 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full hidden lg:flex items-center justify-center bg-black text-white border-2 border-white z-20"
