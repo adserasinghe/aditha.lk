@@ -290,11 +290,11 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
             {/* Email Contact */}
             <a
-              href="mailto:adithacreation2020@gmail.com"
+              href="mailto:mail@aditha.lk"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#200f38]/90 hover:bg-[#2d154e] text-[#c084fc] border border-[#a855f7]/30 shadow-[0_0_20px_rgba(168,85,247,0.12)] hover:shadow-[0_0_25px_rgba(168,85,247,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group"
             >
               <Mail size={18} className="transition-transform group-hover:scale-110" />
-              <span>adithacreation2020@gmail.com</span>
+              <span>mail@aditha.lk</span>
             </a>
           </motion.div>
 

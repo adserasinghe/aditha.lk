@@ -240,14 +240,14 @@ export const ZENTIX_DATA = {
       variant: "social" as const
     },
     {
-      label: "adithacreation2020@gmail.com",
-      href: "mailto:adithacreation2020@gmail.com",
+      label: "mail@aditha.lk",
+      href: "mailto:mail@aditha.lk",
       variant: "email" as const
     }
   ],
   metrics: [
     { value: "8+", label: "BRANDING RELEASE" },
-    { value: "5+", label: "UNIQUE APPS" },
+    { value: "5+", label: "WEB PROJECTS" },
     { value: "LK", label: "BASED IN SL" },
     { value: "∞", label: "INNOVATIONS" }
   ]
