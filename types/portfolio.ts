@@ -49,3 +49,18 @@ export interface SkillGroup {
   category: string;
   skills: string[];
 }
+
+export interface BrandItem {
+  id: string;
+  name: string;
+  subtitle: string;
+  role: string;
+  category: string;
+  year: string;
+  description: string;
+  tags: string[];
+  image?: string;
+  stats?: { label: string; value: string }[];
+  link?: string;
+  badge?: string;
+}

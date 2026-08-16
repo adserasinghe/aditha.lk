@@ -1,4 +1,4 @@
-import { ExpertiseCard, Testimonial, TimelineItem, PhilosophyPillar, Project, SkillGroup } from '../types/portfolio';
+import { ExpertiseCard, Testimonial, TimelineItem, PhilosophyPillar, Project, SkillGroup, BrandItem } from '../types/portfolio';
 
 export const HERO_DATA = {
   headlinePrefix: "Hi, I'm ",
@@ -217,3 +217,69 @@ export const CONTACT_INFO = {
     behance: "https://www.behance.net/adserasinghe"
   }
 };
+
+export const ZENTIX_DATA = {
+  badge: "MY BRAND",
+  titlePrefix: "Aditha ",
+  titleSuffix: "Creation",
+  description: "Aditha Creation is my independent creative studio — delivering bespoke brand identities, typography systems, UI/UX designs, and modern digital experiences.",
+  actions: [
+    {
+      label: "Aditha Creation Page",
+      href: "https://adithacreation.vercel.app/",
+      variant: "page" as const
+    },
+    {
+      label: "Google Play Store",
+      href: "https://play.google.com/store/apps",
+      variant: "playstore" as const
+    },
+    {
+      label: "Aditha Creation",
+      href: "https://facebook.com/adithacreation",
+      variant: "social" as const
+    },
+    {
+      label: "adithacreation2020@gmail.com",
+      href: "mailto:adithacreation2020@gmail.com",
+      variant: "email" as const
+    }
+  ],
+  metrics: [
+    { value: "8+", label: "BRANDING RELEASE" },
+    { value: "5+", label: "UNIQUE APPS" },
+    { value: "LK", label: "BASED IN SL" },
+    { value: "∞", label: "INNOVATIONS" }
+  ]
+};
+
+export const BRANDS_DATA: BrandItem[] = [
+  {
+    id: "aditha-creation",
+    name: "Aditha Creation",
+    subtitle: "Design Studio & Visual Identity House",
+    role: "Founder & Creative Lead",
+    category: "Proprietary Studio",
+    year: "2020 - Present",
+    description: "My independent creative practice delivering bespoke visual identities, typography systems, UI/UX designs, and digital marketing collateral for ambitious brands.",
+    tags: ["Brand Identity", "UI/UX Design", "Graphic Design", "Typography"],
+    stats: [
+      { label: "Established", value: "2020" },
+      { label: "Projects", value: "60+" },
+      { label: "Satisfaction", value: "100%" }
+    ],
+    badge: "Proprietary Brand",
+    image: "https://picsum.photos/seed/adithacreationstudio/900/600",
+    link: "https://www.behance.net/adserasinghe"
+  }
+];
+
+export const BRAND_LOGOS_MARQUEE = [
+  { name: "Aditha Creation", type: "Design Studio", highlight: true },
+  { name: "Zeebac", type: "Athleisure Innovation", highlight: true },
+  { name: "U Link Computer Systems", type: "IT Systems", highlight: false },
+  { name: "Livy Surf House", type: "Hospitality Retreat", highlight: false },
+  { name: "Nimitz World Wide", type: "Web Engineering", highlight: false },
+  { name: "Hansa Computers", type: "Tech Retail", highlight: false }
+];
+
