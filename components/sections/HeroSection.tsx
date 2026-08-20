@@ -53,7 +53,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           </p>
 
           {/* Hero Portrait Image (Mobile & Tablet view only, placed before buttons on mobile/tablet) */}
-          <div className="lg:hidden relative w-full max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-[#0b0f19] mt-2 order-3">
+          <div className="lg:hidden relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-[#0b0f19] mt-2 order-3 self-center mx-auto">
             <Image
               src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"
@@ -182,7 +182,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
         <div className="relative flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
           {/* Top Pill Badge */}
-          <motion.div
+          <motion.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -190,7 +190,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             className="inline-flex items-center justify-center px-4 py-1.5 rounded-full text-[11px] font-bold tracking-[0.25em] text-[#c084fc] bg-[#1a1236]/80 border border-[#a855f7]/30 shadow-[0_0_20px_rgba(168,85,247,0.25)] uppercase"
           >
             {ZENTIX_DATA.badge}
-          </motion.div>
+          </motion.h2>
 
           {/* Centered Brand Icon Box */}
           <motion.div

@@ -16,15 +16,24 @@ import ResumeModal from '../components/ResumeModal';
 
 export default function PortfolioApp() {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<NavTab>('home');
+  const [activeTab, setActiveTab] = useState<NavTab>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab') as NavTab | null;
+      if (tabParam && ['home', 'about', 'portfolio', 'blog', 'contact'].includes(tabParam)) {
+        return tabParam;
+      }
+    }
+    return 'home';
+  });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   useEffect(() => {
-    // Simulate initial asset loading for polished entrance
+    // Simulate brief initial entrance
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1200);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, []);
