@@ -151,7 +151,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group p-8 rounded-3xl bg-[#0e1432]/60 hover:bg-[#12193f] border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-xl flex flex-col justify-between hover:-translate-y-1.5"
+              onClick={() => onTabChange('portfolio')}
+              className="group p-8 rounded-3xl bg-[#0e1432]/60 hover:bg-[#12193f] border border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-xl flex flex-col justify-between hover:-translate-y-1.5 cursor-pointer"
             >
               <div>
                 <div className="p-3 w-fit rounded-none transition-colors">
@@ -166,8 +167,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               </div>
 
               <div className="pt-6 mt-6 border-t border-white/5 flex items-center text-xs font-semibold text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span>Explore Works</span>
-                <ArrowRight className="ml-1" size={14} />
+                <span>Portfolio Page</span>
+                <ArrowRight className="ml-1.5 transition-transform duration-300 group-hover:translate-x-1" size={14} />
               </div>
             </motion.div>
           ))}
