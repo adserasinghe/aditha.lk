@@ -156,12 +156,23 @@ export default function Footer({ onTabChange }: FooterProps) {
           {/* Bottom Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs tracking-wider uppercase">
             {/* Copyright */}
-            <p className="text-gray-500 text-center">
+            <p className="text-gray-500 text-center sm:text-left">
               © {new Date().getFullYear()} ADITHA DINUJA SERASINGHE. ALL RIGHTS RESERVED.
             </p>
 
-            {/* Empty space to balance flex layout */}
-            <div className="hidden sm:block w-10" />
+            {/* Aditha Creation Credit */}
+            <p className="text-gray-400 text-center sm:text-right flex items-center gap-1.5 font-medium">
+              <span>An</span>
+              <a
+                href="https://adithacreation.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-4 decoration-blue-500/40 hover:decoration-blue-400 transition-colors"
+              >
+                Aditha Creation
+              </a>
+              <span>Project</span>
+            </p>
           </div>
         </div>
       </footer>
