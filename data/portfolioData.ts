@@ -1,4 +1,4 @@
-import { ExpertiseCard, Testimonial, TimelineItem, PhilosophyPillar, Project, SkillGroup } from '../types/portfolio';
+import { ExpertiseCard, Testimonial, TimelineItem, PhilosophyPillar, Project, SkillGroup, BrandItem } from '../types/portfolio';
 
 export const HERO_DATA = {
   headlinePrefix: "Hi, I'm ",
@@ -194,13 +194,13 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'nexus-branding',
-    title: 'Nexus Branding',
+    title: 'Zeebac Brand Identity & Apparel',
     category: 'Branding',
-    description: 'Modern brand identity system for a futuristic tech conglomerate, including logo, typography, and guidelines.',
-    longDescription: 'A comprehensive brand architecture developed for Nexus Dynamics. The deliverable included custom logotype geometry, color theory guidelines optimized for both physical merchandise and OLED digital displays, typography pairing systems, and 3D motion graphic bumpers.',
-    image: 'https://picsum.photos/seed/nexuspiersunset/1200/800',
-    tags: ['Brand Identity', 'Adobe Illustrator', 'Logo Design', 'Typography', '3D Motion'],
-    liveUrl: 'https://behance.net/aditha-serasinghe/nexus'
+    description: 'Complete brand identity and athleisure apparel mockup system, including logo typography, merchandise packaging, and brand guidelines.',
+    longDescription: 'A comprehensive brand architecture and merchandise design system developed for Zeebac Athleisure Innovation. The project included custom logotype typography, merchandise packaging mockups (hoodies, headwear, apparel tags, and boxes), color theory guidelines optimized for physical products, and digital media assets.',
+    image: 'https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/Gemini_Generated_Image_e3glqte3glqte3gl-clean.png',
+    tags: ['Brand Identity', 'Apparel Design', 'Logo Design', 'Typography', 'Packaging'],
+    liveUrl: 'https://www.behance.net/gallery/253532895/adserasinghe-portfolio'
   }
 ];
 
@@ -213,6 +213,73 @@ export const CONTACT_INFO = {
     github: "https://github.com/adserasinghe",
     linkedin: "https://linkedin.com/in/adserasinghe",
     twitter: "https://x.com/adserasinghe",
-    facebook: "https://facebook.com/adserasinghe"
+    facebook: "https://facebook.com/adserasinghe",
+    behance: "https://www.behance.net/adserasinghe"
   }
 };
+
+export const ZENTIX_DATA = {
+  badge: "MY BRAND",
+  titlePrefix: "Aditha ",
+  titleSuffix: "Creation",
+  description: "Aditha Creation is my independent creative studio — delivering bespoke brand identities, typography systems, UI/UX designs, and modern digital experiences.",
+  actions: [
+    {
+      label: "Aditha Creation Page",
+      href: "https://adithacreation.vercel.app/",
+      variant: "page" as const
+    },
+    {
+      label: "Google Play Store",
+      href: "https://play.google.com/store/apps",
+      variant: "playstore" as const
+    },
+    {
+      label: "Aditha Creation",
+      href: "https://facebook.com/adithacreation",
+      variant: "social" as const
+    },
+    {
+      label: "mail@aditha.lk",
+      href: "mailto:mail@aditha.lk",
+      variant: "email" as const
+    }
+  ],
+  metrics: [
+    { value: "8+", label: "BRANDING RELEASE" },
+    { value: "5+", label: "WEB PROJECTS" },
+    { value: "LK", label: "BASED IN SL" },
+    { value: "∞", label: "INNOVATIONS" }
+  ]
+};
+
+export const BRANDS_DATA: BrandItem[] = [
+  {
+    id: "aditha-creation",
+    name: "Aditha Creation",
+    subtitle: "Design Studio & Visual Identity House",
+    role: "Founder & Creative Lead",
+    category: "Proprietary Studio",
+    year: "2020 - Present",
+    description: "My independent creative practice delivering bespoke visual identities, typography systems, UI/UX designs, and digital marketing collateral for ambitious brands.",
+    tags: ["Brand Identity", "UI/UX Design", "Graphic Design", "Typography"],
+    stats: [
+      { label: "Established", value: "2020" },
+      { label: "Projects", value: "60+" },
+      { label: "Satisfaction", value: "100%" }
+    ],
+    badge: "Proprietary Brand",
+    image: "https://picsum.photos/seed/adithacreationstudio/900/600",
+    link: "https://www.behance.net/adserasinghe"
+  }
+];
+
+export const BRAND_LOGOS_MARQUEE = [
+  { name: "Aditha Creation", type: "Design Studio", highlight: true },
+  { name: "Zeebac", type: "Athleisure Innovation", highlight: true },
+  { name: "U Link Computer Systems", type: "IT Systems", highlight: false },
+  { name: "Livy Surf House", type: "Hospitality Retreat", highlight: false },
+  { name: "Nimitz World Wide", type: "Web Engineering", highlight: false },
+  { name: "Hansa Computers", type: "Tech Retail", highlight: false }
+];
+

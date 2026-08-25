@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from "@vercel/analytics/react";
 import Script from 'next/script';
 import './globals.css';
 import Cursor from '../components/Cursor';
@@ -33,6 +34,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         </Script>
         <Cursor />
         {children}
+        <Analytics />
       </body>
     </html>
   );

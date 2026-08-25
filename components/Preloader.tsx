@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import Image from 'next/image';
 
 export default function Preloader({ message = "Aditha" }: { message?: string }) {
@@ -9,7 +9,7 @@ export default function Preloader({ message = "Aditha" }: { message?: string }) 
       key="preloader"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: 'easeInOut' }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white"
     >
       {/* Subtle radial glow background */}
