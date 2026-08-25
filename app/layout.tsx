@@ -1,7 +1,7 @@
 import type {Metadata} from 'next';
 import { Inter } from 'next/font/google';
 import { Analytics } from "@vercel/analytics/react";
-import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import './globals.css';
 import Cursor from '../components/Cursor';
 
@@ -23,18 +23,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${inter.variable} bg-black`} suppressHydrationWarning>
       <body className="min-h-screen bg-black text-gray-100 antialiased selection:bg-blue-600 selection:text-white" suppressHydrationWarning>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-11506106540" strategy="afterInteractive" />
-        <Script id="google-tag-config" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-11506106540');
-          `}
-        </Script>
         <Cursor />
         {children}
         <Analytics />
+        <GoogleAnalytics gaId="AW-11506106540" />
       </body>
     </html>
   );
