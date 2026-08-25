@@ -396,6 +396,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
           <button
             onClick={() => onTabChange('contact')}
+            data-cursor="arrow"
             className="relative z-10 bg-white hover:bg-gray-100 text-blue-700 font-bold px-10 py-4 rounded-full shadow-xl transition-transform hover:scale-105 active:scale-95 text-base cursor-pointer"
           >
             Get In Touch

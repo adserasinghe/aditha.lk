@@ -167,6 +167,7 @@ export default function Footer({ onTabChange }: FooterProps) {
                 href="https://adithacreation.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
+                data-cursor="hand"
                 className="text-blue-400 hover:text-blue-300 font-semibold underline underline-offset-4 decoration-blue-500/40 hover:decoration-blue-400 transition-colors"
               >
                 Aditha Creation
