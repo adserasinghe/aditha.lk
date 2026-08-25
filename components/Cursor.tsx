@@ -135,12 +135,12 @@ export default function Cursor() {
               translateX: '-50%',
               translateY: '-50%',
             }}
-            initial={{ opacity: 0, scale: 0.4, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.4, y: -10 }}
+            initial={{ opacity: 0, scale: 0.4, rotate: -15 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.4, rotate: 15 }}
             transition={{
               type: 'spring',
-              stiffness: 450,
+              stiffness: 400,
               damping: 24,
             }}
             whileTap={{ scale: 0.85, rotate: -10 }}
