@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, Pointer } from 'lucide-react';
 
-type CursorMode = 'default' | 'hover' | 'arrow' | 'hand';
+type CursorMode = 'default' | 'hover' | 'arrow' | 'hand' | 'none';
 
 export default function Cursor() {
   const [cursorMode, setCursorMode] = useState<CursorMode>('default');
@@ -24,6 +24,16 @@ export default function Cursor() {
 
       const target = e.target as HTMLElement | null;
       if (target) {
+        const isNone = Boolean(
+          target.closest('[data-cursor="none"]') ||
+          target.closest('[data-blob-avatar]')
+        );
+
+        if (isNone) {
+          setCursorMode('none');
+          return;
+        }
+
         const handEl = target.closest('[data-cursor="hand"]') ||
           (target.closest('a')?.getAttribute('href')?.includes('adithacreation.vercel.app'));
 
@@ -70,6 +80,7 @@ export default function Cursor() {
 
   if (!isVisible) return null;
 
+  const isNone = cursorMode === 'none';
   const isArrow = cursorMode === 'arrow';
   const isHand = cursorMode === 'hand';
   const isHover = cursorMode === 'hover';
@@ -77,7 +88,7 @@ export default function Cursor() {
 
   return (
     <>
-      {/* Primary Cursor Dot (Hidden when in custom icon mode: arrow or hand) */}
+      {/* Primary Cursor Dot (Hidden when in custom icon mode or none) */}
       <motion.div
         className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference hidden lg:block"
         style={{
@@ -87,15 +98,15 @@ export default function Cursor() {
           translateY: '-50%',
         }}
         animate={{
-          scale: isCustomIcon ? 0 : isHover ? 2.6 : 1,
-          opacity: isVisible && !isCustomIcon ? 1 : 0,
+          scale: isNone ? 0 : isCustomIcon ? 0 : isHover ? 2.6 : 1,
+          opacity: isVisible && !isCustomIcon && !isNone ? 1 : 0,
         }}
         transition={{
           type: 'spring',
           stiffness: 450,
           damping: 25,
         }}
-        whileTap={{ scale: 0.6 }}
+        whileTap={{ scale: isNone ? 0 : 0.6 }}
       />
 
       {/* Arrow Cursor when hovering 'Get In Touch' */}

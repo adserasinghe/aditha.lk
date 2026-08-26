@@ -1,18 +1,72 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { ArrowRight, Layout, Code, Palette, Share2, Star, Quote, Sparkles, ArrowDown, Briefcase, ArrowUpRight, Mail, X } from 'lucide-react';
 import { HERO_DATA, EXPERTISE_CARDS, TESTIMONIALS, CONTACT_INFO, BRANDS_DATA, BRAND_LOGOS_MARQUEE, ZENTIX_DATA } from '../../data/portfolioData';
 import { NavTab } from '../../types/portfolio';
 import adithaCreationImage from '../../src/assets/images/regenerated_image_1786884966330.jpg';
+import AnimatedBlobAvatar from '../AnimatedBlobAvatar';
 interface HeroSectionProps {
   onTabChange: (tab: NavTab) => void;
 }
 
 export default function HeroSection({ onTabChange }: HeroSectionProps) {
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const brandSectionRef = useRef<HTMLElement>(null);
+  const [showAvatar, setShowAvatar] = useState(false);
+  const [avatarTop, setAvatarTop] = useState<number | null>(null);
+  const [avatarOpacity, setAvatarOpacity] = useState<number>(1);
+
+  useEffect(() => {
+    const handleScrollCheck = () => {
+      if (!brandSectionRef.current) return;
+      const rect = brandSectionRef.current.getBoundingClientRect();
+      // Show avatar when user scrolls to or reaches near the Brand Section and stays on screen for all lower sections
+      const isPastBrand = rect.top <= window.innerHeight * 0.8;
+      if (!isPastBrand) {
+        setShowAvatar(false);
+        return;
+      }
+
+      setShowAvatar(true);
+
+      // Lock avatar so it never overlaps the footer
+      const footerEl = document.querySelector('footer');
+      if (footerEl) {
+        const footerRect = footerEl.getBoundingClientRect();
+        const defaultTop = window.innerWidth >= 768 ? 112 : 96;
+        const avatarHeight = window.innerWidth >= 1280 ? 112 : window.innerWidth >= 1024 ? 104 : window.innerWidth >= 768 ? 92 : 56;
+        const gap = 24; // 24px safety buffer above the footer top border
+
+        const triggerThreshold = defaultTop + avatarHeight + gap;
+        if (footerRect.top < triggerThreshold) {
+          const lockedTop = footerRect.top - avatarHeight - gap;
+          setAvatarTop(lockedTop);
+          // If pushed too close to navbar, smoothly fade out
+          if (lockedTop < 70) {
+            const opacity = Math.max(0, (lockedTop - 20) / 50);
+            setAvatarOpacity(opacity);
+          } else {
+            setAvatarOpacity(1);
+          }
+        } else {
+          setAvatarTop(null);
+          setAvatarOpacity(1);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollCheck, { passive: true });
+    window.addEventListener('resize', handleScrollCheck, { passive: true });
+    handleScrollCheck();
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollCheck);
+      window.removeEventListener('resize', handleScrollCheck);
+    };
+  }, []);
 
   const renderCardIcon = (name: string) => {
     switch (name) {
@@ -176,10 +230,30 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
       </section>
 
       {/* 3. MY BRAND SECTION (ZENTIX) */}
-      <section className="relative max-w-7xl mx-auto px-6 md:px-12 py-6 overflow-hidden">
+      <section ref={brandSectionRef} data-brand-section="true" className="relative max-w-7xl mx-auto px-6 md:px-12 py-10 overflow-hidden">
         {/* Subtle Ambient Radial Glows in Background */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[280px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
+
+        {/* Floating Corner Animated Blob Avatar - Persistently Fixed in Viewport Position & locked above Footer */}
+        <AnimatePresence>
+          {showAvatar && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.75, y: -10 }}
+              animate={{
+                opacity: avatarOpacity,
+                scale: avatarOpacity > 0 ? 1 : 0.7,
+                y: 0,
+              }}
+              exit={{ opacity: 0, scale: 0.75, y: -10 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              style={avatarTop !== null ? { top: `${avatarTop}px` } : undefined}
+              className={`fixed right-3 sm:right-6 md:right-8 lg:right-10 xl:right-12 z-40 pointer-events-auto transition-[top] duration-75 ${avatarTop === null ? 'top-24 sm:top-24 md:top-28 lg:top-28 xl:top-28' : ''}`}
+            >
+              <AnimatedBlobAvatar className="w-[56px] h-[56px] sm:w-[76px] sm:h-[76px] md:w-[92px] md:h-[92px] lg:w-[104px] lg:h-[104px] xl:w-[112px] xl:h-[112px]" />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="relative flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
           {/* Top Pill Badge */}
@@ -258,6 +332,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               href="https://adithacreation.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
+              data-avatar-mood="excite"
+              data-brand-page-link="true"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600/90 to-cyan-600/90 hover:from-blue-500 hover:to-cyan-500 text-white border border-cyan-400/40 shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group cursor-pointer"
             >
               <ArrowUpRight size={18} className="transition-transform group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -268,6 +344,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
+              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#092218]/90 hover:bg-[#0c2e20] text-[#00E676] border border-[#00E676]/30 shadow-[0_0_20px_rgba(0,230,118,0.12)] hover:shadow-[0_0_25px_rgba(0,230,118,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group cursor-pointer"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current transition-transform group-hover:scale-110" aria-hidden="true">
@@ -281,6 +358,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               href="https://facebook.com/adithacreation"
               target="_blank"
               rel="noopener noreferrer"
+              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#0c1a36]/90 hover:bg-[#10244c] text-[#38bdf8] border border-[#38bdf8]/30 shadow-[0_0_20px_rgba(56,189,248,0.12)] hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current transition-transform group-hover:scale-110" aria-hidden="true">
@@ -292,6 +370,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             {/* Email Contact */}
             <a
               href="mailto:mail@aditha.lk"
+              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#200f38]/90 hover:bg-[#2d154e] text-[#c084fc] border border-[#a855f7]/30 shadow-[0_0_20px_rgba(168,85,247,0.12)] hover:shadow-[0_0_25px_rgba(168,85,247,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group"
             >
               <Mail size={18} className="transition-transform group-hover:scale-110" />
@@ -308,7 +387,9 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * idx }}
-                className="rounded-2xl sm:rounded-3xl bg-[#090d1c]/90 border border-white/10 hover:border-cyan-500/40 p-8 sm:p-10 text-center flex flex-col items-center justify-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_35px_rgba(0,0,0,0.6)] group"
+                data-avatar-mood="confus"
+                data-brand-interactive="true"
+                className="rounded-2xl sm:rounded-3xl bg-[#090d1c]/90 border border-white/10 hover:border-cyan-500/40 p-8 sm:p-10 text-center flex flex-col items-center justify-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 shadow-[0_10px_35px_rgba(0,0,0,0.6)] group cursor-pointer"
               >
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#38bdf8] tracking-tight drop-shadow-[0_0_15px_rgba(56,189,248,0.35)] group-hover:scale-105 transition-transform duration-300">
                   {metric.value}
