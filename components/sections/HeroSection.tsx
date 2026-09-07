@@ -18,6 +18,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
   const [showAvatar, setShowAvatar] = useState(false);
   const [avatarTop, setAvatarTop] = useState<number | null>(null);
   const [avatarOpacity, setAvatarOpacity] = useState<number>(1);
+  // Temporarily hidden flag as requested by user
+  const isAvatarTemporarilyHidden = true;
 
   useEffect(() => {
     const handleScrollCheck = () => {
@@ -236,8 +238,9 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[280px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Floating Corner Animated Blob Avatar - Persistently Fixed in Viewport Position & locked above Footer */}
+        {/* Temporarily hidden as requested by user */}
         <AnimatePresence>
-          {showAvatar && (
+          {!isAvatarTemporarilyHidden && showAvatar && (
             <motion.div
               initial={{ opacity: 0, scale: 0.75, y: -10 }}
               animate={{
