@@ -165,18 +165,18 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           </div>
 
           {/* CTA Buttons (Placed after image on mobile/tablet via order-4, before image on desktop via lg:order-3) */}
-          <div className="w-full max-w-md lg:max-w-none flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 order-4 lg:order-3">
+          <div className="w-full max-w-xs sm:max-w-none flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 pt-1 sm:pt-2 order-4 lg:order-3">
             <button
               onClick={() => onTabChange('portfolio')}
-              className="group flex items-center justify-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full shadow-[0_4px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.5)] transition-all active:scale-95 w-full sm:w-auto"
+              className="group flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full shadow-[0_4px_20px_rgba(59,130,246,0.3)] sm:shadow-[0_4px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_8px_35px_rgba(59,130,246,0.5)] transition-all active:scale-95 w-full sm:w-auto"
             >
               <span>{HERO_DATA.primaryCta}</span>
-              <ArrowRight className="transition-transform group-hover:translate-x-1" size={18} />
+              <ArrowRight className="transition-transform group-hover:translate-x-1 w-4 h-4 sm:w-[18px] sm:h-[18px]" />
             </button>
 
             <button
               onClick={() => onTabChange('about')}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full border border-white/20 hover:border-blue-400/80 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all active:scale-95 w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 px-5 py-2.5 sm:px-7 sm:py-4 lg:px-8 lg:py-4 text-sm sm:text-base rounded-full border border-white/20 hover:border-blue-400/80 bg-white/5 hover:bg-white/10 text-white font-semibold transition-all active:scale-95 w-full sm:w-auto"
             >
               <span>{HERO_DATA.secondaryCta}</span>
             </button>
