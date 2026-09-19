@@ -20,6 +20,34 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
   const [avatarOpacity, setAvatarOpacity] = useState<number>(1);
   // Temporarily hidden flag as requested by user
   const isAvatarTemporarilyHidden = true;
+  const [isColorAnimating, setIsColorAnimating] = useState(false);
+
+  useEffect(() => {
+    // Start color changing animation upon landing on the hero page
+    const startTimer = setTimeout(() => {
+      setIsColorAnimating(true);
+    }, 400);
+
+    // Stop animation after the landing cycle completes (3.5s)
+    const stopTimer = setTimeout(() => {
+      setIsColorAnimating(false);
+    }, 3900);
+
+    // Also immediately stop the animation if user scrolls away from the landing hero section
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setIsColorAnimating(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(stopTimer);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScrollCheck = () => {
@@ -99,8 +127,24 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             <span className="hover:font-bold transition-all duration-300 inline-block mr-2">.</span>
             <span className="hover:font-bold transition-all duration-300 inline-block mr-2">Building</span>
             <span className="hover:font-bold transition-all duration-300 inline-block mr-2">Your</span>
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent hover:font-bold transition-all duration-300 inline-block mr-2">Digital</span>
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent hover:font-bold transition-all duration-300 inline-block">Excellence.</span>
+            <span
+              className={`bg-clip-text text-transparent hover:font-bold transition-all duration-700 inline-block mr-2 ${
+                isColorAnimating
+                  ? 'bg-gradient-to-r from-blue-400 via-cyan-300 via-indigo-400 via-purple-400 via-pink-400 to-blue-400 animate-color-cycle'
+                  : 'bg-gradient-to-r from-blue-400 to-cyan-300'
+              }`}
+            >
+              Digital
+            </span>
+            <span
+              className={`bg-clip-text text-transparent hover:font-bold transition-all duration-700 inline-block ${
+                isColorAnimating
+                  ? 'bg-gradient-to-r from-blue-400 via-cyan-300 via-indigo-400 via-purple-400 via-pink-400 to-blue-400 animate-color-cycle'
+                  : 'bg-gradient-to-r from-blue-400 to-cyan-300'
+              }`}
+            >
+              Excellence.
+            </span>
           </h1>
 
           {/* Subheading */}
