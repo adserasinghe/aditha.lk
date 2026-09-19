@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { ArrowRight, Layout, Code, Palette, Share2, Star, Quote, Sparkles, ArrowDown, Briefcase, ArrowUpRight, Mail, X } from 'lucide-react';
+import { ArrowRight, Layout, Code, Palette, Share2, Star, Quote, Sparkles, Briefcase, ArrowUpRight, Mail, X } from 'lucide-react';
 import { HERO_DATA, EXPERTISE_CARDS, TESTIMONIALS, CONTACT_INFO, BRANDS_DATA, BRAND_LOGOS_MARQUEE, ZENTIX_DATA } from '../../data/portfolioData';
 import { NavTab } from '../../types/portfolio';
 import adithaCreationImage from '../../src/assets/images/regenerated_image_1786884966330.jpg';
@@ -205,31 +205,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             />
           </div>
         </motion.div>
-
-        {/* Scroll Down Button (Desktop view) */}
-        <button
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-          className="absolute bottom-4 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full hidden lg:flex items-center justify-center bg-black text-white border-2 border-white z-20"
-        >
-          {/* Rotating Text */}
-          <motion.div
-            className="absolute inset-0"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          >
-            <svg viewBox="0 0 100 100" className="w-full h-full">
-              <path id="curve" fill="transparent" stroke="black" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-              <text>
-                <textPath xlinkHref="#curve" className="text-[12px] font-medium uppercase tracking-widest fill-white" startOffset="0%">
-                  HOW WE ROLL - HOW WE ROLL - 
-                </textPath>
-              </text>
-            </svg>
-          </motion.div>
-          
-          {/* Fixed Arrow */}
-          <ArrowDown size={28} className="text-white relative z-10" />
-        </button>
       </section>
 
       {/* 2. CORE EXPERTISE SECTION */}

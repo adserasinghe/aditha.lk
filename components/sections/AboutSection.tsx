@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import Image from 'next/image';
-import { CheckCircle2, Download, Briefcase, Target, TrendingUp, History, Sparkles, Award } from 'lucide-react';
+import { CheckCircle2, Download, Briefcase, Target, TrendingUp, History, Sparkles, Award, Linkedin } from 'lucide-react';
 import { ABOUT_NARRATIVE, QUALITY_BADGES, EXPERTISE_CARDS, WORKING_EXPERIENCE, CORE_PHILOSOPHY, TECHNICAL_SKILLS, HERO_DATA, CONTACT_INFO } from '../../data/portfolioData';
 import { NavTab } from '../../types/portfolio';
 import aboutImage from '../../src/assets/images/regenerated_image_1782646625117.png';
@@ -84,6 +84,18 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
             >
               Get In Touch
             </button>
+
+            <a
+              id="about-linkedin-button"
+              href={CONTACT_INFO.socials.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center gap-2.5 px-8 py-4 rounded-full border border-[#0077b5]/50 hover:border-[#0077b5] bg-[#0077b5]/15 hover:bg-[#0077b5]/30 text-white font-semibold shadow-[0_4px_20px_rgba(0,119,181,0.25)] hover:shadow-[0_6px_25px_rgba(0,119,181,0.4)] transition-all active:scale-95 text-sm"
+              aria-label="Connect on LinkedIn"
+            >
+              <Linkedin size={18} className="text-[#38bdf8] group-hover:text-white transition-colors shrink-0" />
+              <span>LinkedIn</span>
+            </a>
 
             <a
               href={CONTACT_INFO.socials.behance}
