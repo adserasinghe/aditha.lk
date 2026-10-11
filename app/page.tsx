@@ -43,7 +43,7 @@ export default function PortfolioApp() {
   };
 
   return (
-    <div className="relative min-h-screen bg-black text-gray-100 flex flex-col justify-between overflow-x-hidden">
+    <div className="relative min-h-screen bg-slate-50 dark:bg-black text-slate-800 dark:text-gray-100 flex flex-col justify-between overflow-x-hidden transition-colors duration-300">
       {/* Initial Animated Brand Preloader */}
       <AnimatePresence>
         {isLoading && <Preloader message="Aditha" />}
@@ -51,9 +51,9 @@ export default function PortfolioApp() {
 
       {/* Global Background Glow Effects */}
       <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-10 left-1/3 w-[700px] h-[700px] bg-purple-600/10 rounded-full blur-[160px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-cyan-400/5 dark:bg-cyan-500/10 rounded-full blur-[140px]" />
+        <div className="absolute bottom-10 left-1/3 w-[700px] h-[700px] bg-purple-500/5 dark:bg-purple-600/10 rounded-full blur-[160px]" />
       </div>
 
       {/* Sticky Main Navigation */}

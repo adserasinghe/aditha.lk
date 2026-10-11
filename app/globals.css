@@ -1,16 +1,32 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   html {
     scroll-behavior: smooth;
+    transition: color-scheme 0.3s ease;
+  }
+
+  html.dark {
     color-scheme: dark;
+  }
+
+  html.light {
+    color-scheme: light;
   }
   
   body {
-    background-color: #000000;
-    color: #e5e7eb;
+    background-color: #f8fafc;
+    color: #1e293b;
     font-family: var(--font-sans), system-ui, sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .dark body {
+    background-color: #000000;
+    color: #e5e7eb;
   }
 
   ::selection {
@@ -24,11 +40,17 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
   background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #cbd5e1;
   border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1e293b;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
@@ -57,6 +79,10 @@
 }
 
 .glow-bg {
+  background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.07) 0%, rgba(241, 245, 249, 0) 70%);
+}
+
+.dark .glow-bg {
   background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.12) 0%, rgba(10, 14, 39, 0) 70%);
 }
 

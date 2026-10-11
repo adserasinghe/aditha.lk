@@ -28,19 +28,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           exit={{ scale: 0.92, opacity: 0, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-4xl bg-[#0b0f19] border border-white/15 rounded-3xl shadow-2xl overflow-hidden text-gray-200 my-8"
+          className="relative w-full max-w-4xl bg-white dark:bg-[#0b0f19] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-hidden text-slate-800 dark:text-gray-200 my-8 transition-colors duration-300"
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-black/60 hover:bg-black text-white border border-white/20 transition-transform hover:scale-110"
+            className="absolute top-6 right-6 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-slate-900 dark:text-white border border-slate-200 dark:border-white/20 transition-transform hover:scale-110 shadow-md cursor-pointer"
             aria-label="Close modal"
           >
             <X size={20} />
           </button>
 
           {/* Hero Image */}
-          <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden bg-gray-900">
+          <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden bg-slate-200 dark:bg-gray-900">
             <Image
               src={project.image}
               alt={project.title}
@@ -49,11 +49,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               referrerPolicy="no-referrer"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
             
             <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
               <div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-600/90 text-white mb-2">
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-600/90 text-white mb-2 shadow-sm">
                   {project.category}
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
@@ -78,7 +78,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-medium text-sm border border-white/10 transition-all hover:scale-105"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm border border-white/20 transition-all hover:scale-105 backdrop-blur-sm"
                   >
                     <Github size={16} />
                     <span>Source</span>
@@ -92,25 +92,25 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           <div className="p-6 sm:p-8 md:p-10 space-y-8">
             {/* Overview */}
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-3 flex items-center gap-2">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-3 flex items-center gap-2">
                 <Layers size={16} />
                 <span>Project Architecture & Overview</span>
               </h3>
-              <p className="text-gray-300 leading-relaxed text-base">
+              <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-base">
                 {project.longDescription}
               </p>
             </div>
 
             {/* Tech Stack Pills */}
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">
+              <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-3">
                 Technologies & Tools Used
               </h4>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((t) => (
                   <span
                     key={t}
-                    className="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-blue-300"
+                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium text-blue-600 dark:text-blue-300"
                   >
                     {t}
                   </span>
@@ -119,23 +119,23 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Key Deliverables Checkpoints */}
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
-              <h4 className="text-sm font-semibold text-white">Project Highlights</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-400">
+            <div className="p-6 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 space-y-3">
+              <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Project Highlights</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600 dark:text-gray-400">
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-500 flex-shrink-0" size={16} />
+                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
                   <span>Responsive Mobile-First UI</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-500 flex-shrink-0" size={16} />
+                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
                   <span>WCAG 2.1 AA Accessibility</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-500 flex-shrink-0" size={16} />
+                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
                   <span>Optimized Core Web Vitals</span>
                 </div>
                 <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-500 flex-shrink-0" size={16} />
+                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
                   <span>SEO-Friendly Architecture</span>
                 </div>
               </div>
