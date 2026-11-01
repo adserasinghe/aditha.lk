@@ -43,8 +43,8 @@ export default function Footer({ onTabChange }: FooterProps) {
 
   return (
     <>
-      <footer className="relative bg-slate-100 dark:bg-[#070a1c] border-t border-slate-200 dark:border-white/10 pt-16 pb-12 text-slate-600 dark:text-gray-400 text-sm overflow-hidden mt-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <footer className="relative bg-slate-100 dark:bg-[#070a1c] border-t border-slate-200 dark:border-white/10 pt-16 pb-0 text-slate-600 dark:text-gray-400 text-sm overflow-hidden mt-20 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-200 dark:border-white/10">
             {/* Left Section: Company Name & Tagline */}
             <div className="md:col-span-6 flex flex-col gap-4 items-center md:items-start text-center md:text-left">
@@ -175,6 +175,16 @@ export default function Footer({ onTabChange }: FooterProps) {
               <span>Project</span>
             </p>
           </div>
+        </div>
+
+        {/* Downside Giant Watermark Typography (Style from reference image) */}
+        <div
+          aria-hidden="true"
+          className="w-full overflow-hidden select-none pointer-events-none flex justify-center items-end leading-none mt-4 sm:mt-6"
+        >
+          <span className="font-black text-[18vw] sm:text-[20vw] md:text-[21vw] lg:text-[22vw] tracking-tighter text-blue-950/[0.06] dark:text-white/[0.035] leading-[0.8] select-none translate-y-[10%] sm:translate-y-[14%] transition-colors duration-300">
+            Aditha
+          </span>
         </div>
       </footer>
 
