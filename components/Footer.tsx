@@ -43,8 +43,8 @@ export default function Footer({ onTabChange }: FooterProps) {
 
   return (
     <>
-      <footer className="relative bg-slate-100 dark:bg-[#070a1c] border-t border-slate-200 dark:border-white/10 pt-16 pb-0 text-slate-600 dark:text-gray-400 text-sm overflow-hidden mt-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <footer className="relative bg-slate-100 dark:bg-[#070a1c] border-t border-slate-200 dark:border-white/10 pt-16 sm:pt-20 pb-0 text-slate-600 dark:text-gray-400 text-sm overflow-hidden mt-20 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-slate-200 dark:border-white/10">
             {/* Left Section: Company Name & Tagline */}
             <div className="md:col-span-6 flex flex-col gap-4 items-center md:items-start text-center md:text-left">
