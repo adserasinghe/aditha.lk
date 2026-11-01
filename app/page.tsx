@@ -30,10 +30,10 @@ export default function PortfolioApp() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   useEffect(() => {
-    // Simulate brief initial entrance
+    // Safety fallback in case preloader is interrupted
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 600);
+    }, 2800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -46,7 +46,12 @@ export default function PortfolioApp() {
     <div className="relative min-h-screen bg-slate-50 dark:bg-black text-slate-800 dark:text-gray-100 flex flex-col justify-between overflow-x-hidden transition-colors duration-300">
       {/* Initial Animated Brand Preloader */}
       <AnimatePresence>
-        {isLoading && <Preloader message="Aditha" />}
+        {isLoading && (
+          <Preloader
+            message="Aditha"
+            onComplete={() => setIsLoading(false)}
+          />
+        )}
       </AnimatePresence>
 
       {/* Global Background Glow Effects */}
