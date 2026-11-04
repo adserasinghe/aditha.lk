@@ -110,12 +110,15 @@ export default function PortfolioSection({ onSelectProject }: PortfolioSectionPr
               </div>
 
               {/* Card Text Content */}
-              <div className="p-7 sm:p-8 space-y-4 flex flex-col justify-between flex-grow">
+              <div
+                className="p-7 sm:p-8 space-y-4 flex flex-col justify-between flex-grow bg-black dark:bg-black text-white"
+                style={{ backgroundColor: '#000000' }}
+              >
                 <div className="space-y-2.5">
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex items-center justify-between">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
                   </h3>
-                  <p className="text-slate-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 transition-colors">
+                  <p className="text-gray-300 dark:text-gray-400 text-sm leading-relaxed line-clamp-3 transition-colors">
                     {project.description}
                   </p>
                 </div>

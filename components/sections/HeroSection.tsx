@@ -153,7 +153,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           </p>
 
           {/* Hero Portrait Image (Mobile & Tablet view only, placed before buttons on mobile/tablet) */}
-          <div className="lg:hidden relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-200 dark:bg-[#0b0f19] border border-slate-300 dark:border-white/10 mt-2 order-3 self-center mx-auto">
+          <div
+            className="lg:hidden relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-black dark:bg-black mt-2 order-3 self-center mx-auto"
+            style={{ backgroundColor: '#000000' }}
+          >
             <Image
               src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"
@@ -194,7 +197,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-blue-600/30 via-cyan-500/20 to-purple-600/20 blur-2xl -z-10" />
 
           {/* Portrait Container */}
-          <div className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-slate-100 dark:bg-[#0b0f19] border border-slate-300 dark:border-white/10">
+          <div
+            className="relative w-full max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-black dark:bg-black"
+            style={{ backgroundColor: '#000000' }}
+          >
             <Image
               src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"

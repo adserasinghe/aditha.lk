@@ -114,12 +114,15 @@ export default function ContactSection() {
           </div>
 
           {/* Availability Box */}
-          <div className="p-6 rounded-2xl bg-slate-50 dark:bg-gradient-to-tr dark:from-blue-900/40 dark:via-blue-950/30 dark:to-cyan-950/20 border border-slate-200 dark:border-blue-500/30 space-y-2 mt-8">
+          <div
+            className="p-6 rounded-2xl bg-black dark:bg-black border border-slate-200 dark:border-blue-500/30 space-y-2 mt-8 text-white"
+            style={{ backgroundColor: '#000000' }}
+          >
             <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold text-xs uppercase tracking-wider">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
               <span>Available for work</span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-xs text-gray-300 dark:text-gray-300 leading-relaxed">
               {CONTACT_INFO.availability}.
             </p>
           </div>
