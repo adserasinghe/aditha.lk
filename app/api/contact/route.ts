@@ -21,7 +21,12 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json();
+    const body = (await req.json()) as {
+      name?: string;
+      email?: string;
+      subject?: string;
+      message?: string;
+    };
     const { name, email, subject, message } = body;
 
     if (!name || !email || !message) {
@@ -65,4 +70,3 @@ export async function POST(req: NextRequest) {
     return applyRateLimitHeaders(response, rateLimitResult);
   }
 }
-

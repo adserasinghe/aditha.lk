@@ -2,10 +2,9 @@
 
 import { motion } from 'motion/react';
 import Image from 'next/image';
-import { CheckCircle2, Download, Briefcase, Target, TrendingUp, History, Sparkles, Award, Linkedin } from 'lucide-react';
-import { ABOUT_NARRATIVE, QUALITY_BADGES, EXPERTISE_CARDS, WORKING_EXPERIENCE, CORE_PHILOSOPHY, TECHNICAL_SKILLS, HERO_DATA, CONTACT_INFO } from '../../data/portfolioData';
+import { CheckCircle2, Download, Briefcase, Target, TrendingUp, History, Sparkles, Linkedin } from 'lucide-react';
+import { ABOUT_NARRATIVE, QUALITY_BADGES, EXPERTISE_CARDS, WORKING_EXPERIENCE, CORE_PHILOSOPHY, TECHNICAL_SKILLS, CONTACT_INFO } from '../../data/portfolioData';
 import { NavTab } from '../../types/portfolio';
-import aboutImage from '../../src/assets/images/regenerated_image_1782646625117.png';
 
 interface AboutSectionProps {
   onOpenResume: () => void;
@@ -21,6 +20,8 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
       default: return <Sparkles className="text-blue-500" size={32} />;
     }
   };
+
+  const aboutImage = "https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg";
 
   return (
     <div className="space-y-32 py-12 max-w-7xl mx-auto px-6 md:px-12">
@@ -42,9 +43,9 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
             ))}
           </div>
 
-          {/* Mobile & Tablet Image (Visible after paragraph on mobile and tablet) */}
+          {/* Mobile & Tablet Image */}
           <div className="lg:hidden w-full flex justify-center py-2">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-slate-300 dark:border-white/15 shadow-2xl bg-slate-100 dark:bg-[#0b0f19]">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-slate-300 dark:border-white/15 shadow-2xl bg-black dark:bg-black" style={{ backgroundColor: '#000000' }}>
               <Image
                 src={aboutImage}
                 alt="Aditha Journey"
@@ -120,7 +121,7 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
           className="hidden lg:flex lg:col-span-5 justify-center relative"
         >
           <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 via-cyan-500/10 to-transparent rounded-3xl blur-2xl -z-10" />
-          <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-slate-300 dark:border-white/15 shadow-2xl bg-slate-100 dark:bg-[#0b0f19]">
+          <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-slate-300 dark:border-white/15 shadow-2xl bg-black dark:bg-black" style={{ backgroundColor: '#000000' }}>
             <Image
               src={aboutImage}
               alt="Aditha Journey"
@@ -129,7 +130,6 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50" />
-            
           </div>
         </motion.div>
       </section>
@@ -179,7 +179,6 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
               transition={{ duration: 0.5, delay: idx * 0.15 }}
               className="relative group"
             >
-              {/* Timeline Indicator Dot */}
               <div className="absolute -left-[31px] sm:-left-[47px] top-1.5 flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-black border-2 border-blue-500 group-hover:bg-blue-600 group-hover:scale-110 transition-all shadow-[0_0_15px_rgba(59,130,246,0.5)]">
                 <Briefcase size={14} className="text-blue-500 dark:text-blue-400 group-hover:text-white transition-colors" />
               </div>
@@ -210,7 +209,7 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
         </div>
       </section>
 
-      {/* 4. CORE PHILOSOPHY (3 COLUMNS) */}
+      {/* 4. CORE PHILOSOPHY */}
       <section className="space-y-12 rounded-3xl bg-slate-100/90 dark:bg-[#070a1c] p-8 sm:p-14 border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-2xl transition-colors duration-300">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight transition-colors duration-300">

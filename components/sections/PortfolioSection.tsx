@@ -83,7 +83,7 @@ export default function PortfolioSection({ onSelectProject }: PortfolioSectionPr
               exit={{ opacity: 0, scale: 0.94, y: 20 }}
               transition={{ duration: 0.45 }}
               onClick={() => onSelectProject(project)}
-              className="group cursor-pointer rounded-3xl bg-white dark:bg-[#0b0f19] border border-slate-200/90 dark:border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-xl overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
+              className="group cursor-pointer rounded-3xl bg-black dark:bg-black border border-slate-200/90 dark:border-white/10 hover:border-blue-500/50 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-xl overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
             >
               {/* Card Image Thumbnail */}
               <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-200 dark:bg-gray-900">
@@ -127,7 +127,7 @@ export default function PortfolioSection({ onSelectProject }: PortfolioSectionPr
                 <div className="pt-4 border-t border-slate-200/80 dark:border-white/5 flex items-center justify-between gap-4">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.slice(0, 3).map((tag) => (
-                      <span key={tag} className="text-[11px] font-mono text-slate-600 dark:text-gray-400 bg-slate-100 dark:bg-white/5 px-2.5 py-1 rounded-lg border border-slate-200/80 dark:border-transparent">
+                      <span key={tag} className="text-[11px] font-mono text-slate-300 dark:text-gray-400 bg-white/10 dark:bg-white/5 px-2.5 py-1 rounded-lg border border-white/10 dark:border-transparent">
                         {tag}
                       </span>
                     ))}

@@ -3,11 +3,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { ArrowRight, Layout, Code, Palette, Share2, Star, Quote, Sparkles, Briefcase, ArrowUpRight, Mail, X } from 'lucide-react';
-import { HERO_DATA, EXPERTISE_CARDS, TESTIMONIALS, CONTACT_INFO, BRANDS_DATA, BRAND_LOGOS_MARQUEE, ZENTIX_DATA } from '../../data/portfolioData';
+import { ArrowRight, Layout, Code, Palette, Share2, Star, Quote, Sparkles, ArrowUpRight, Mail, X } from 'lucide-react';
+import { HERO_DATA, EXPERTISE_CARDS, TESTIMONIALS, ZENTIX_DATA } from '../../data/portfolioData';
 import { NavTab } from '../../types/portfolio';
-import adithaCreationImage from '../../src/assets/images/regenerated_image_1786884966330.jpg';
 import AnimatedBlobAvatar from '../AnimatedBlobAvatar';
+
 interface HeroSectionProps {
   onTabChange: (tab: NavTab) => void;
 }
@@ -53,7 +53,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
     const handleScrollCheck = () => {
       if (!brandSectionRef.current) return;
       const rect = brandSectionRef.current.getBoundingClientRect();
-      // Show avatar when user scrolls to or reaches near the Brand Section and stays on screen for all lower sections
       const isPastBrand = rect.top <= window.innerHeight * 0.8;
       if (!isPastBrand) {
         setShowAvatar(false);
@@ -62,19 +61,17 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
 
       setShowAvatar(true);
 
-      // Lock avatar so it never overlaps the footer
       const footerEl = document.querySelector('footer');
       if (footerEl) {
         const footerRect = footerEl.getBoundingClientRect();
         const defaultTop = window.innerWidth >= 768 ? 112 : 96;
         const avatarHeight = window.innerWidth >= 1280 ? 112 : window.innerWidth >= 1024 ? 104 : window.innerWidth >= 768 ? 92 : 56;
-        const gap = 24; // 24px safety buffer above the footer top border
+        const gap = 24;
 
         const triggerThreshold = defaultTop + avatarHeight + gap;
         if (footerRect.top < triggerThreshold) {
           const lockedTop = footerRect.top - avatarHeight - gap;
           setAvatarTop(lockedTop);
-          // If pushed too close to navbar, smoothly fade out
           if (lockedTop < 70) {
             const opacity = Math.max(0, (lockedTop - 20) / 50);
             setAvatarOpacity(opacity);
@@ -152,7 +149,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             {HERO_DATA.subheading}
           </p>
 
-          {/* Hero Portrait Image (Mobile & Tablet view only, placed before buttons on mobile/tablet) */}
+          {/* Hero Portrait Image (Mobile & Tablet view only) */}
           <div
             className="lg:hidden relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-2xl overflow-hidden shadow-2xl bg-black dark:bg-black mt-2 order-3 self-center mx-auto"
             style={{ backgroundColor: '#000000' }}
@@ -167,7 +164,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             />
           </div>
 
-          {/* CTA Buttons (Placed after image on mobile/tablet via order-4, before image on desktop via lg:order-3) */}
+          {/* CTA Buttons */}
           <div className="w-full max-w-xs sm:max-w-none flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-4 pt-1 sm:pt-2 order-4 lg:order-3">
             <button
               onClick={() => onTabChange('portfolio')}
@@ -256,32 +253,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         </div>
       </section>
 
-      {/* 3. MY BRAND SECTION (ZENTIX) */}
+      {/* 3. MY BRAND SECTION (ZENTIX / ADITHA CREATION) */}
       <section ref={brandSectionRef} data-brand-section="true" className="relative max-w-7xl mx-auto px-6 md:px-12 py-10 overflow-hidden">
-        {/* Subtle Ambient Radial Glows in Background */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[350px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[280px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
-
-        {/* Floating Corner Animated Blob Avatar - Persistently Fixed in Viewport Position & locked above Footer */}
-        {/* Temporarily hidden as requested by user */}
-        <AnimatePresence>
-          {!isAvatarTemporarilyHidden && showAvatar && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.75, y: -10 }}
-              animate={{
-                opacity: avatarOpacity,
-                scale: avatarOpacity > 0 ? 1 : 0.7,
-                y: 0,
-              }}
-              exit={{ opacity: 0, scale: 0.75, y: -10 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-              style={avatarTop !== null ? { top: `${avatarTop}px` } : undefined}
-              className={`fixed right-3 sm:right-6 md:right-8 lg:right-10 xl:right-12 z-40 pointer-events-auto transition-[top] duration-75 ${avatarTop === null ? 'top-24 sm:top-24 md:top-28 lg:top-28 xl:top-28' : ''}`}
-            >
-              <AnimatedBlobAvatar className="w-[56px] h-[56px] sm:w-[76px] sm:h-[76px] md:w-[92px] md:h-[92px] lg:w-[104px] lg:h-[104px] xl:w-[112px] xl:h-[112px]" />
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <div className="relative flex flex-col items-center text-center space-y-8 max-w-5xl mx-auto">
           {/* Top Pill Badge */}
@@ -303,19 +278,20 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="relative"
           >
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#090d1c] border border-cyan-500/40 p-1.5 flex items-center justify-center shadow-[0_0_35px_rgba(56,189,248,0.4)] group hover:border-cyan-400/80 transition-all duration-300 overflow-hidden">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-black border border-cyan-500/40 p-1.5 flex items-center justify-center shadow-[0_0_35px_rgba(56,189,248,0.4)] group hover:border-cyan-400/80 transition-all duration-300 overflow-hidden" style={{ backgroundColor: '#000000' }}>
               <Image
-                src={adithaCreationImage}
+                src="/aditha-logo.png"
                 alt="Aditha Creation Logo"
                 fill
-                className="object-cover rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                className="object-contain p-2 rounded-2xl transition-transform duration-500 group-hover:scale-105"
+                priority
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/15 pointer-events-none" />
             </div>
           </motion.div>
 
-          {/* Brand Name Title with Accent Underline */}
+          {/* Brand Name Title */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -332,7 +308,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               </span>
             </h2>
 
-            {/* Glowing gradient accent bar */}
             <div className="w-24 sm:w-32 h-1 rounded-full bg-gradient-to-r from-[#38bdf8] via-[#3b82f6] to-[#60a5fa] shadow-[0_0_15px_rgba(56,189,248,0.8)]" />
           </motion.div>
 
@@ -355,24 +330,20 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 pt-2"
           >
-            {/* Aditha Creation Page Button */}
             <a
               href="https://adithacreation.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
-              data-avatar-mood="excite"
-              data-brand-page-link="true"
+              data-cursor="hand"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-blue-600/90 to-cyan-600/90 hover:from-blue-500 hover:to-cyan-500 text-white border border-cyan-400/40 shadow-[0_0_20px_rgba(56,189,248,0.2)] hover:shadow-[0_0_25px_rgba(56,189,248,0.4)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group cursor-pointer"
             >
               <ArrowUpRight size={18} className="transition-transform group-hover:scale-110 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               <span>Aditha Creation Page</span>
             </a>
 
-            {/* Google Play Store (Coming Soon Modal Trigger) */}
             <button
               type="button"
               onClick={() => setShowComingSoon(true)}
-              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#092218]/90 hover:bg-[#0c2e20] text-[#00E676] border border-[#00E676]/30 shadow-[0_0_20px_rgba(0,230,118,0.12)] hover:shadow-[0_0_25px_rgba(0,230,118,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group cursor-pointer"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current transition-transform group-hover:scale-110" aria-hidden="true">
@@ -381,12 +352,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               <span>Google Play Store</span>
             </button>
 
-            {/* Aditha Creation Official Facebook */}
             <a
               href="https://facebook.com/adithacreation"
               target="_blank"
               rel="noopener noreferrer"
-              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#0c1a36]/90 hover:bg-[#10244c] text-[#38bdf8] border border-[#38bdf8]/30 shadow-[0_0_20px_rgba(56,189,248,0.12)] hover:shadow-[0_0_25px_rgba(56,189,248,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group"
             >
               <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current transition-transform group-hover:scale-110" aria-hidden="true">
@@ -395,10 +364,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               <span>Aditha Creation</span>
             </a>
 
-            {/* Email Contact */}
             <a
               href="mailto:mail@aditha.lk"
-              data-avatar-mood="confus"
               className="flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#200f38]/90 hover:bg-[#2d154e] text-[#c084fc] border border-[#a855f7]/30 shadow-[0_0_20px_rgba(168,85,247,0.12)] hover:shadow-[0_0_25px_rgba(168,85,247,0.25)] text-sm sm:text-base font-semibold transition-all duration-300 active:scale-95 group"
             >
               <Mail size={18} className="transition-transform group-hover:scale-110" />
@@ -406,7 +373,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             </a>
           </motion.div>
 
-          {/* 4 Metric Cards Grid */}
+          {/* Metrics Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full pt-6">
             {ZENTIX_DATA.metrics.map((metric, idx) => (
               <motion.div
@@ -415,8 +382,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * idx }}
-                data-avatar-mood="confus"
-                data-brand-interactive="true"
                 className="rounded-2xl sm:rounded-3xl bg-white dark:bg-[#090d1c]/90 border border-slate-200/90 dark:border-white/10 hover:border-cyan-500/40 p-8 sm:p-10 text-center flex flex-col items-center justify-center space-y-2.5 transition-all duration-300 hover:-translate-y-1 shadow-[0_4px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.6)] group cursor-pointer"
               >
                 <div className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#38bdf8] tracking-tight drop-shadow-[0_0_15px_rgba(56,189,248,0.35)] group-hover:scale-105 transition-transform duration-300">
@@ -431,7 +396,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         </div>
       </section>
 
-      {/* 4. WHAT MY CLIENTS SAY (Testimonials) */}
+      {/* 4. WHAT MY CLIENTS SAY */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 space-y-16">
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight transition-colors duration-300">
@@ -487,7 +452,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         </div>
       </section>
 
-      {/* 4. BOTTOM CTA BANNER */}
+      {/* 5. BOTTOM CTA BANNER */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
@@ -496,7 +461,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
           transition={{ duration: 0.6 }}
           className="relative rounded-3xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 p-10 sm:p-16 text-center text-white shadow-[0_10px_50px_rgba(59,130,246,0.3)] overflow-hidden flex flex-col items-center justify-center gap-8"
         >
-          {/* Background pattern */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.25)_0%,transparent_60%)] pointer-events-none" />
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight max-w-2xl relative z-10">
@@ -513,11 +477,10 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
         </motion.div>
       </section>
 
-      {/* 5. COMING SOON POPUP MODAL */}
+      {/* 6. COMING SOON POPUP MODAL */}
       <AnimatePresence>
         {showComingSoon && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
-            {/* Backdrop with Blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -526,7 +489,6 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
             />
 
-            {/* Modal Dialog Content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -534,10 +496,8 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className="relative w-full max-w-md bg-white dark:bg-[#090d1c] border border-emerald-500/30 dark:border-cyan-500/30 rounded-3xl p-6 sm:p-8 text-center shadow-2xl dark:shadow-[0_0_50px_rgba(56,189,248,0.25)] overflow-hidden z-10"
             >
-              {/* Subtle ambient gradient inside modal */}
               <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-48 h-48 bg-[#00E676]/15 rounded-full blur-3xl pointer-events-none" />
 
-              {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setShowComingSoon(false)}
@@ -548,30 +508,25 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
               </button>
 
               <div className="flex flex-col items-center space-y-4 pt-2">
-                {/* Play Store Icon with Glowing Ring */}
                 <div className="relative w-16 h-16 rounded-2xl bg-emerald-50 dark:bg-[#092218] border border-[#00E676]/40 flex items-center justify-center text-[#00E676] shadow-[0_0_25px_rgba(0,230,118,0.3)]">
                   <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current" aria-hidden="true">
                     <path d="M4.88626 2L13.6994 10.8115L15.9736 8.53729C12.866 6.65184 8.70388 4.12253 6.83204 2.98532L5.57797 2.22559C5.35633 2.09056 5.11897 2.01784 4.88626 2ZM3.54099 3.05499C3.52315 3.15181 3.50781 3.24911 3.50781 3.35357V20.7675C3.50781 20.8405 3.5225 20.9085 3.53269 20.9782L12.4985 12.0125L3.54099 3.05499ZM17.4682 9.44464L14.9004 12.0125L17.4234 14.5355C18.7602 13.7252 19.686 13.1626 19.7888 13.1006C20.2432 12.8229 20.4998 12.4039 20.4921 11.9461C20.4854 11.4968 20.2287 11.0951 19.7921 10.848C19.6945 10.7919 18.7812 10.2404 17.4682 9.44464ZM13.6994 13.2134L4.91281 22C5.08352 21.9703 5.25401 21.9194 5.41707 21.8208C5.64301 21.6833 11.746 17.9805 15.9288 15.4428L13.6994 13.2134Z" />
                   </svg>
                 </div>
 
-                {/* Status Pill */}
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-[#00E676] bg-[#00E676]/10 border border-[#00E676]/30">
                   <span className="w-2 h-2 rounded-full bg-[#00E676] animate-pulse" />
                   <span>Coming Soon</span>
                 </div>
 
-                {/* Modal Title */}
                 <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                   Google Play Store Releases
                 </h3>
 
-                {/* Modal Description */}
                 <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed px-2">
                   Our upcoming Android apps, tools, and digital solutions under the <strong className="text-slate-900 dark:text-white">Aditha Creation</strong> brand ecosystem are currently in preparation and will be published on the Google Play Store soon.
                 </p>
 
-                {/* Dismiss Button */}
                 <div className="w-full pt-3">
                   <button
                     type="button"

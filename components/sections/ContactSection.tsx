@@ -98,11 +98,12 @@ export default function ContactSection() {
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-500/10 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400 flex-shrink-0">
                   <Image
-                    src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/Aditha_Creation_V5-removebg-preview%202.ico"
+                    src="/aditha-logo.png"
                     alt="Aditha Creation"
                     width={24}
                     height={24}
                     className="object-contain"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div>
@@ -143,27 +144,27 @@ export default function ContactSection() {
                   Your Name <span className="text-blue-600 dark:text-blue-500">*</span>
                 </label>
                 <input
+                  type="text"
                   id="name"
                   name="name"
-                  type="text"
-                  placeholder="John Doe"
                   required
-                  className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#070a1c] border border-slate-200 dark:border-white/10 focus:border-blue-500 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none transition-all"
+                  placeholder="John Doe"
+                  className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                 />
               </div>
 
               {/* Email Input */}
               <div className="space-y-2">
                 <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-gray-300">
-                  Your Email <span className="text-blue-600 dark:text-blue-500">*</span>
+                  Email Address <span className="text-blue-600 dark:text-blue-500">*</span>
                 </label>
                 <input
+                  type="email"
                   id="email"
                   name="email"
-                  type="email"
-                  placeholder="john@example.com"
                   required
-                  className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#070a1c] border border-slate-200 dark:border-white/10 focus:border-blue-500 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none transition-all"
+                  placeholder="john@example.com"
+                  className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                 />
               </div>
             </div>
@@ -174,15 +175,15 @@ export default function ContactSection() {
                 Subject
               </label>
               <input
+                type="text"
                 id="subject"
                 name="subject"
-                type="text"
-                placeholder="Project Inquiry"
-                className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#070a1c] border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-all"
+                placeholder="Project Inquiry / Collaboration"
+                className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm"
               />
             </div>
 
-            {/* Message Textarea */}
+            {/* Message Area */}
             <div className="space-y-2">
               <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-slate-700 dark:text-gray-300">
                 Message <span className="text-blue-600 dark:text-blue-500">*</span>
@@ -190,17 +191,17 @@ export default function ContactSection() {
               <textarea
                 id="message"
                 name="message"
-                rows={6}
-                placeholder="Tell me about your project..."
+                rows={5}
                 required
-                className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-[#070a1c] border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-all resize-y"
+                placeholder="Tell me about your project, goals, and timeline..."
+                className="w-full px-4 py-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors text-sm resize-none"
               />
             </div>
 
-            {/* Submit CTA Button */}
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-xl shadow-[0_4px_30px_rgba(59,130,246,0.35)] hover:shadow-[0_6px_35px_rgba(59,130,246,0.5)] transition-all active:scale-98 text-sm sm:text-base focus:outline-none cursor-pointer"
+              className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-[0_4px_25px_rgba(59,130,246,0.35)] hover:shadow-[0_6px_30px_rgba(59,130,246,0.5)] transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>Send Message</span>
               <Send size={16} />

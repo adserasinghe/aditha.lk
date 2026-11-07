@@ -1,5 +1,19 @@
 export type NavTab = 'home' | 'about' | 'portfolio' | 'blog' | 'contact';
 
+export type ProjectCategory = 'All' | 'Web Dev' | 'Mobile' | 'UI/UX' | 'Branding';
+
+export interface Project {
+  id: string;
+  title: string;
+  category: ProjectCategory;
+  description: string;
+  longDescription: string;
+  image: string;
+  tags: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
 export interface ExpertiseCard {
   id: string;
   title: string;
@@ -28,21 +42,7 @@ export interface TimelineItem {
 export interface PhilosophyPillar {
   title: string;
   description: string;
-  iconName: 'target' | 'trending-up' | 'history';
-}
-
-export type ProjectCategory = 'All' | 'Web Dev' | 'Mobile' | 'UI/UX' | 'Branding';
-
-export interface Project {
-  id: string;
-  title: string;
-  category: 'Web Dev' | 'Mobile' | 'UI/UX' | 'Branding';
-  description: string;
-  longDescription: string;
-  image: string;
-  tags: string[];
-  liveUrl?: string;
-  githubUrl?: string;
+  iconName: string;
 }
 
 export interface SkillGroup {
@@ -59,8 +59,8 @@ export interface BrandItem {
   year: string;
   description: string;
   tags: string[];
-  image?: string;
-  stats?: { label: string; value: string }[];
-  link?: string;
-  badge?: string;
+  stats: { label: string; value: string }[];
+  badge: string;
+  image: string;
+  link: string;
 }

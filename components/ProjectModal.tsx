@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { X, ExternalLink, Github, CheckCircle2, Layers } from 'lucide-react';
+import { X, ExternalLink, Github, Tag } from 'lucide-react';
 import { Project } from '../types/portfolio';
 
 interface ProjectModalProps {
@@ -15,134 +15,106 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-black/85 backdrop-blur-md overflow-y-auto"
-      >
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+        {/* Backdrop */}
         <motion.div
-          initial={{ scale: 0.92, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.92, opacity: 0, y: 20 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          onClick={(e) => e.stopPropagation()}
-          className="relative w-full max-w-4xl bg-white dark:bg-[#0b0f19] border border-slate-200 dark:border-white/15 rounded-3xl shadow-2xl overflow-hidden text-slate-800 dark:text-gray-200 my-8 transition-colors duration-300"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="absolute inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
+        />
+
+        {/* Modal Dialog */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ type: 'spring', damping: 28, stiffness: 320 }}
+          className="relative w-full max-w-3xl bg-white dark:bg-[#0b0f19] border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl z-10 max-h-[90vh] flex flex-col"
         >
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-20 flex items-center justify-center w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-slate-900 dark:text-white border border-slate-200 dark:border-white/20 transition-transform hover:scale-110 shadow-md cursor-pointer"
-            aria-label="Close modal"
+            className="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all cursor-pointer"
+            aria-label="Close project modal"
           >
             <X size={20} />
           </button>
 
-          {/* Hero Image */}
-          <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden bg-slate-200 dark:bg-gray-900">
+          {/* Media Header */}
+          <div className="relative w-full aspect-[16/9] bg-slate-200 dark:bg-gray-900 flex-shrink-0">
             <Image
               src={project.image}
               alt={project.title}
               fill
               className="object-cover"
               referrerPolicy="no-referrer"
-              priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
-            
-            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-blue-600/90 text-white mb-2 shadow-sm">
-                  {project.category}
-                </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-                  {project.title}
-                </h2>
-              </div>
-
-              <div className="flex items-center gap-3">
-                {project.liveUrl && (
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm shadow-lg transition-all hover:scale-105"
-                  >
-                    <span>Live Demo</span>
-                    <ExternalLink size={16} />
-                  </a>
-                )}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium text-sm border border-white/20 transition-all hover:scale-105 backdrop-blur-sm"
-                  >
-                    <Github size={16} />
-                    <span>Source</span>
-                  </a>
-                )}
-              </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="absolute bottom-6 left-6 right-6">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white shadow-md inline-block mb-2">
+                {project.category}
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight drop-shadow-md">
+                {project.title}
+              </h2>
             </div>
           </div>
 
           {/* Content Body */}
-          <div className="p-6 sm:p-8 md:p-10 space-y-8">
-            {/* Overview */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-3 flex items-center gap-2">
-                <Layers size={16} />
-                <span>Project Architecture & Overview</span>
-              </h3>
-              <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-base">
-                {project.longDescription}
-              </p>
-            </div>
+          <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
+            <p className="text-slate-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+              {project.longDescription || project.description}
+            </p>
 
-            {/* Tech Stack Pills */}
-            <div>
-              <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-gray-400 mb-3">
-                Technologies & Tools Used
+            {/* Tags */}
+            <div className="space-y-2">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-gray-400 flex items-center gap-1.5">
+                <Tag size={14} />
+                <span>Technologies & Skills</span>
               </h4>
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((t) => (
+                {project.tags.map((tag) => (
                   <span
-                    key={t}
-                    className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-xs font-medium text-blue-600 dark:text-blue-300"
+                    key={tag}
+                    className="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-800 dark:text-gray-300"
                   >
-                    {t}
+                    {tag}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Key Deliverables Checkpoints */}
-            <div className="p-6 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/5 space-y-3">
-              <h4 className="text-sm font-semibold text-slate-900 dark:text-white">Project Highlights</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600 dark:text-gray-400">
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
-                  <span>Responsive Mobile-First UI</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
-                  <span>WCAG 2.1 AA Accessibility</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
-                  <span>Optimized Core Web Vitals</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <CheckCircle2 className="text-blue-600 dark:text-blue-500 flex-shrink-0" size={16} />
-                  <span>SEO-Friendly Architecture</span>
-                </div>
-              </div>
+            {/* Actions */}
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-md transition-all active:scale-95"
+                >
+                  <span>Visit Project</span>
+                  <ExternalLink size={16} />
+                </a>
+              )}
+
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-slate-900 dark:text-white font-semibold text-sm transition-all active:scale-95 border border-slate-300 dark:border-white/10"
+                >
+                  <Github size={16} />
+                  <span>View Source</span>
+                </a>
+              )}
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </AnimatePresence>
   );
 }

@@ -282,4 +282,3 @@ export const BRAND_LOGOS_MARQUEE = [
   { name: "Nimitz World Wide", type: "Web Engineering", highlight: false },
   { name: "Hansa Computers", type: "Tech Retail", highlight: false }
 ];
-

@@ -1,47 +1,36 @@
-'use client';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { useRouter } from 'next/navigation';
-import { NavTab } from '@/types/portfolio';
-
-export default function WhatIsHtmlPage() {
-  const router = useRouter();
-
-  const handleTabChange = (tab: NavTab) => {
-    router.push(`/?tab=${tab}`);
-  };
-
+export default function BlogPost() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-black text-slate-800 dark:text-gray-100 flex flex-col transition-colors duration-300">
-      <Navbar activeTab="blog" onTabChange={handleTabChange} />
-      
-      <main className="flex-grow max-w-4xl mx-auto px-6 py-28 sm:py-32 w-full">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mb-8 tracking-tight transition-colors duration-300">
-          What is HTML?
-        </h1>
-        <article className="prose dark:prose-invert max-w-none space-y-4">
-          <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg transition-colors duration-300">
-            HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.
-          </p>
-          <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg transition-colors duration-300">
-            HTML describes the structure of a Web page semantically and originally included cues for the appearance of the document. HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects such as interactive forms may be embedded into the rendered page.
-          </p>
-        </article>
+    <article className="max-w-4xl mx-auto px-6 py-16">
+      <Link
+        href="/?tab=blog"
+        className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline mb-8"
+      >
+        <ArrowLeft size={16} />
+        <span>Back to Blog</span>
+      </Link>
 
-        <div className="mt-12">
-          <a
-            href="https://linktr.ee/adithacreation"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3.5 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-500 shadow-md transition-all active:scale-95"
-          >
-            Are You Want Hire me?
-          </a>
-        </div>
-      </main>
+      <h1 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight mb-4">
+        What is HTML?
+      </h1>
+      <p className="text-slate-500 dark:text-gray-400 text-sm mb-8">
+        Published on October 2025 • 4 min read
+      </p>
 
-      <Footer onTabChange={handleTabChange} />
-    </div>
+      <div className="prose dark:prose-invert max-w-none text-slate-700 dark:text-gray-300 space-y-6 leading-relaxed">
+        <p>
+          HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and structure of web content. Other technologies besides HTML are generally used to describe a web page&apos;s appearance/presentation (CSS) or functionality/behavior (JavaScript).
+        </p>
+
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-8 mb-4">
+          Why Semantic HTML Matters
+        </h2>
+        <p>
+          Semantic HTML introduces meaning to the web page rather than just presentation. For example, using a <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-xs font-mono">&lt;header&gt;</code>, <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-xs font-mono">&lt;nav&gt;</code>, or <code className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-xs font-mono">&lt;article&gt;</code> tag clearly describes its role to both browser and developer.
+        </p>
+      </div>
+    </article>
   );
 }
