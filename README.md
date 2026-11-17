@@ -41,6 +41,6 @@ npm run preview:cloudflare
 npm run deploy:cloudflare
 # or: npx wrangler deploy
 ```
-[![Netlify Status](https://api.netlify.com/api/v1/badges/602b2d91-8330-4bb9-aa4d-9613b726262d/deploy-status)](https://app.netlify.com/projects/aditha/deploys)
 Configurations are defined in `wrangler.json`, `wrangler.toml`, and `open-next.config.ts`.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/602b2d91-8330-4bb9-aa4d-9613b726262d/deploy-status)](https://app.netlify.com/projects/aditha/deploys)
 
