@@ -21,7 +21,7 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
     }
   };
 
-  const aboutImage = "https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg";
+  const aboutImage = "https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/AIEnhancer_IMG_20260127_081320.jpg";
 
   return (
     <div className="space-y-32 py-12 max-w-7xl mx-auto px-6 md:px-12">
