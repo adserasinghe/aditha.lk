@@ -155,7 +155,7 @@ export default function HeroSection({ onTabChange }: HeroSectionProps) {
             style={{ backgroundColor: '#000000' }}
           >
             <Image
-              src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/copilot_image_1751472410892~2.jpeg"
+              src="https://b9f9acb180fb.blob.upstash.io/copilot_image_1751472410892~2.jpeg"
               alt="Aditha Dinuja Serasinghe"
               fill
               className="object-cover transition-transform duration-700 hover:scale-105"

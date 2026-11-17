@@ -70,7 +70,7 @@ export default function AboutSection({ onOpenResume, onTabChange }: AboutSection
           {/* Resume CTA */}
           <div className="pt-6 flex flex-wrap items-center gap-4">
             <a
-              href="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/aditha_serasinghe.pdf"
+              href="https://b9f9acb180fb.blob.upstash.io/aditha_serasinghe.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-full shadow-[0_4px_25px_rgba(59,130,246,0.35)] hover:shadow-[0_6px_30px_rgba(59,130,246,0.5)] transition-all active:scale-95 text-sm"
