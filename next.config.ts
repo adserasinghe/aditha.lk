@@ -4,12 +4,12 @@ const isDev = process.env.NODE_ENV === 'development';
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://va.vercel-scripts.com`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://va.vercel-scripts.com`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "img-src 'self' data: blob: https://6rhooijwwmhiclbs.public.blob.vercel-storage.com https://picsum.photos https://fastly.picsum.photos https://images.unsplash.com https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net",
+  "img-src 'self' data: blob: https://6rhooijwwmhiclbs.public.blob.vercel-storage.com https://picsum.photos https://fastly.picsum.photos https://images.unsplash.com",
   "font-src 'self' data: https://fonts.gstatic.com",
-  `connect-src 'self' https://formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://www.googletagmanager.com https://www.google.com https://googleads.g.doubleclick.net https://6rhooijwwmhiclbs.public.blob.vercel-storage.com${isDev ? ' ws: wss:' : ''}`,
-  "frame-src 'self' https://6rhooijwwmhiclbs.public.blob.vercel-storage.com https://www.googletagmanager.com https://td.doubleclick.net",
+  `connect-src 'self' https://formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com https://6rhooijwwmhiclbs.public.blob.vercel-storage.com${isDev ? ' ws: wss:' : ''}`,
+  "frame-src 'self' https://6rhooijwwmhiclbs.public.blob.vercel-storage.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self' https://formspree.io",
@@ -56,6 +56,18 @@ const nextConfig: NextConfig = {
           {
             key: 'Content-Security-Policy',
             value: contentSecurityPolicy,
+          },
+          {
+            key: 'Cross-Origin-Opener-Policy',
+            value: 'same-origin',
+          },
+          {
+            key: 'Cross-Origin-Resource-Policy',
+            value: 'same-origin',
+          },
+          {
+            key: 'Cross-Origin-Embedder-Policy',
+            value: 'credentialless',
           },
           {
             key: 'X-DNS-Prefetch-Control',
