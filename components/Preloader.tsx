@@ -52,17 +52,15 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           }}
           className="relative flex flex-col items-center"
         >
-          <div className="relative w-24 h-24 rounded-3xl bg-black border border-white/20 p-2 shadow-[0_0_50px_rgba(59,130,246,0.5)] flex items-center justify-center">
-            <Image
-              src="https://b9f9acb180fb.blob.upstash.io/my%20logo%20bw%201%20sq.png"
-              alt="Aditha Logo"
-              width={70}
-              height={70}
-              className="object-contain"
-              priority
-              referrerPolicy="no-referrer"
-            />
-          </div>
+          <Image
+            src="https://b9f9acb180fb.blob.upstash.io/my%20logo%20bw%201%20sq.png"
+            alt="Aditha Logo"
+            width={80}
+            height={80}
+            className="object-contain"
+            priority
+            referrerPolicy="no-referrer"
+          />
         </motion.div>
       </div>
     </motion.div>
