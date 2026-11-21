@@ -53,7 +53,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
           className="relative flex flex-col items-center"
         >
           <Image
-            src="https://b9f9acb180fb.blob.upstash.io/my%20logo%20bw%201%20sq.png"
+            src="https://6rhooijwwmhiclbs.public.blob.vercel-storage.com/my%20logo%20bw%201%20sq.png"
             alt="Aditha Logo"
             width={80}
             height={80}
